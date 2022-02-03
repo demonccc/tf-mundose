@@ -34,3 +34,14 @@ steps:
     provider: 'aws'
     command: 'apply'
     environmentServiceNameAWS: 'aws test'
+- task: ManualIntervention@8
+  inputs:
+    timeoutInMinutes: 120
+    instructions: 'Borrar infra?'
+    emailRecipients: 'demonccc.y@gmail.com'
+    onTimeout: 'resume'
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'aws'
+    command: 'destroy'
+    environmentServiceNameAWS: 'aws test'
